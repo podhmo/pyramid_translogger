@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 import time
 from .compat import url_quote
-
+from pyramid.settings import asbool
 import logging
 logger = logging.getLogger(__name__)
 
@@ -100,14 +100,13 @@ class TransLogger(object):
 
 
 def translogger_tween(handler, registry):
-    
-    translogger = TransLogger(None)
+    setup_console_handler = asbool(registry.settings.get("pyramid_translogger.setup_console_handler", True))
+    translogger = TransLogger(None, setup_console_handler=setup_console_handler)
 
     def tween(request):
         environ = request.environ
         start = time.localtime()
-        req_uri = url_quote(environ.get('SCRIPT_NAME', '')
-                               + environ.get('PATH_INFO', ''))
+        req_uri = url_quote(environ.get('SCRIPT_NAME', '') + environ.get('PATH_INFO', ''))
         if environ.get('QUERY_STRING'):
             req_uri += '?' + environ['QUERY_STRING']
         method = environ['REQUEST_METHOD']
