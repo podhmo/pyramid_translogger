@@ -30,8 +30,8 @@ testing_extras = tests_require + [
 ]
 
 setup(name='pyramid_translogger',
-      version='0.0',
-      description='porting Paste#translogger',
+      version='0.1',
+      description='access log logger tween (almost stolen from Paste.translogger)',
       long_description=README + '\n\n' + CHANGES,
       classifiers=[
           "Programming Language :: Python",
@@ -40,7 +40,7 @@ setup(name='pyramid_translogger',
       keywords='',
       author="",
       author_email="",
-      url="",
+      url="https://github.com/podhmo/pyramid_translogger",
       packages=find_packages(),
       include_package_data=True,
       zip_safe=False,
