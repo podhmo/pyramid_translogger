@@ -30,7 +30,7 @@ testing_extras = tests_require + [
 ]
 
 setup(name='pyramid_translogger',
-      version='0.1',
+      version='0.1.1',
       description='access log logger tween (almost stolen from Paste.translogger)',
       long_description=README + '\n\n' + CHANGES,
       classifiers=[
